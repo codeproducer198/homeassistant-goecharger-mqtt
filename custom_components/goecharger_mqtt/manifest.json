@@ -1,10 +1,10 @@
 {
   "domain": "goecharger_mqtt",
   "name": "go-eCharger (MQTT)",
-  "codeowners": ["@syssi"],
+  "codeowners": ["@syssi", "codeproducer198"],
   "config_flow": true,
   "dependencies": ["mqtt"],
-  "documentation": "https://github.com/syssi/homeassistant-goecharger-mqtt",
+  "documentation": "https://github.com/codeproducer198/homeassistant-goecharger-mqtt",
   "homekit": {},
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/syssi/homeassistant-goecharger-mqtt/issues",
