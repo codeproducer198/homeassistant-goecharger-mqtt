@@ -99,6 +99,21 @@ def extract_item_from_array_to_float(value, key) -> float | None:
         _LOGGER.error("Failed to extract float from array at index %s: %s", key, e)
         return None
 
+# >>>>> TSC
+
+def extract_item_from_array_to_float0(value, key) -> float | None:
+    f = extract_item_from_array_to_float(value, key)
+    if f is not None:
+        return round(f, 0)
+    return f
+
+def extract_item_from_array_to_float1(value, key) -> float | None:
+    f = extract_item_from_array_to_float(value, key)
+    if f is not None:
+        return round(f, 1)
+    return f
+
+# <<<<< TSC
 
 def extract_item_from_array_to_int(value, key) -> int:
     """Extract item from array to int."""
@@ -1568,7 +1583,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="0",
         name="Voltage L1",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.VOLTAGE,
         native_unit_of_measurement=UnitOfElectricPotential.VOLT,
@@ -1580,7 +1595,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="1",
         name="Voltage L2",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.VOLTAGE,
         native_unit_of_measurement=UnitOfElectricPotential.VOLT,
@@ -1592,7 +1607,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="2",
         name="Voltage L3",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.VOLTAGE,
         native_unit_of_measurement=UnitOfElectricPotential.VOLT,
@@ -1604,7 +1619,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="3",
         name="Voltage N",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float1,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.VOLTAGE,
         native_unit_of_measurement=UnitOfElectricPotential.VOLT,
@@ -1616,7 +1631,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="4",
         name="Current L1",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float1,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.CURRENT,
         native_unit_of_measurement=UnitOfElectricCurrent.AMPERE,
@@ -1628,7 +1643,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="5",
         name="Current L2",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float1,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.CURRENT,
         native_unit_of_measurement=UnitOfElectricCurrent.AMPERE,
@@ -1640,7 +1655,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="6",
         name="Current L3",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float1,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.CURRENT,
         native_unit_of_measurement=UnitOfElectricCurrent.AMPERE,
@@ -1652,7 +1667,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="7",
         name="Power L1",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.POWER,
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -1664,7 +1679,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="8",
         name="Power L2",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.POWER,
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -1676,7 +1691,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="9",
         name="Power L3",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.POWER,
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -1688,7 +1703,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="10",
         name="Power N",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.POWER,
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -1700,7 +1715,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="11",
         name="Current power",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.POWER,
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -1712,7 +1727,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="12",
         name="Power factor L1",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.POWER_FACTOR,
         native_unit_of_measurement=PERCENTAGE,
@@ -1724,7 +1739,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="13",
         name="Power factor L2",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.POWER_FACTOR,
         native_unit_of_measurement=PERCENTAGE,
@@ -1736,7 +1751,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="14",
         name="Power factor L3",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.POWER_FACTOR,
         native_unit_of_measurement=PERCENTAGE,
@@ -1748,7 +1763,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
         key="nrg",
         attribute="15",
         name="Power factor N",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.POWER_FACTOR,
         native_unit_of_measurement=PERCENTAGE,
@@ -1969,7 +1984,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
     GoEChargerSensorEntityDescription(
         key="tma",
         name="Temperature sensor 1",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
@@ -1981,7 +1996,7 @@ SENSORS: tuple[GoEChargerSensorEntityDescription, ...] = (
     GoEChargerSensorEntityDescription(
         key="tma",
         name="Temperature sensor 2",
-        state=extract_item_from_array_to_float,
+        state=extract_item_from_array_to_float0,
         entity_category=EntityCategory.DIAGNOSTIC,
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,

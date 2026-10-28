@@ -27,7 +27,7 @@ from .const import (
     DOMAIN,
 )
 
-HEARTBEAT_TIMEOUT = 10
+HEARTBEAT_TIMEOUT = 300
 
 PLATFORMS: list[str] = [
     "binary_sensor",
@@ -113,7 +113,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     def _on_timeout():
         coordinator.async_set_update_error(Exception("Heartbeat timeout"))
 
-    unsub = await mqtt.async_subscribe(hass, f"{topic}/utc", _on_heartbeat, 1)
+    unsub = await mqtt.async_subscribe(hass, f"{topic}/nrg", _on_heartbeat, 1)
 
     def _cancel_timeout() -> None:
         if _timeout_handle:
